@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using AdventureWorks.DataAccess;
+using AdventureWorks.Services;
 using System.Threading.Tasks;
-using System.Web;
 using System.Web.Mvc;
 
 namespace AdventureWorks.Controllers
@@ -16,14 +14,19 @@ namespace AdventureWorks.Controllers
 
         public async Task<ActionResult> About()
         {
-            await Task.Run(() => 
+            var userService = new UserService(ApplicationDbContext.Create());
+            await Task.Run(() =>
             {
-                //do something
+
+                userService.AddUsers();
             }).ConfigureAwait(false);
-            if ((System.Web.HttpContext.Current?.User.Identity.IsAuthenticated).GetValueOrDefault())
-            {
-                ViewBag.Message = $"{System.Web.HttpContext.Current.User.Identity.Name} is logged in";
-            }
+
+            var count = userService.GetUserCount();
+
+            ViewBag.Message = $"{count} users.";
+
+            ViewBag.Message += $"  {System.Web.HttpContext.Current?.User.Identity.Name} is logged in";
+
             return View();
         }
 
