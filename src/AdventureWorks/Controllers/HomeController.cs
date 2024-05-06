@@ -23,11 +23,6 @@ namespace AdventureWorks.Controllers
 
             ViewBag.Message = $"{count} users.";
 
-            if ((System.Web.HttpContext.Current?.User.Identity.IsAuthenticated).GetValueOrDefault())
-            {
-                ViewBag.Message += $"  {System.Web.HttpContext.Current.User.Identity.Name} is logged in";
-            }
-
             return View();
         }
 
@@ -41,11 +36,6 @@ namespace AdventureWorks.Controllers
             var count = userService.GetUserCount();
 
             ViewBag.Message = $"{count} users.";
-
-            if ((System.Web.HttpContext.Current?.User.Identity.IsAuthenticated).GetValueOrDefault())
-            {
-                ViewBag.Message += $"  {System.Web.HttpContext.Current.User.Identity.Name} is logged in";
-            }
 
             return View();
         }
