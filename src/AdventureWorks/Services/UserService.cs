@@ -1,5 +1,7 @@
 ﻿using AdventureWorks.DataAccess;
+using AdventureWorks.Models;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace AdventureWorks.Services
@@ -11,6 +13,11 @@ namespace AdventureWorks.Services
         public UserService(ApplicationDbContext context)
         {
             _context = context;
+        }
+
+        public IEnumerable<UserModel> GetUsers()
+        {
+            return _context.Users.ToList();
         }
 
         public void AddUsers(int count)

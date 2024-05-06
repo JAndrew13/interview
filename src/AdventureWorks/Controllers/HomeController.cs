@@ -19,25 +19,25 @@ namespace AdventureWorks.Controllers
         {
             var userService = new UserService(ApplicationDbContext.Create());
            
-            var count = userService.GetUserCount();
+            var response = new IndexResponseModel();
+            response.Count = userService.GetUserCount();
 
-            ViewBag.Message = $"{count} users.";
-
-            return View();
+            return View(response);
         }
 
         [HttpPost]
-        public ActionResult Index(IndexModel model)
+        public ActionResult Index(IndexRequestModel model)
         {
             var userService = new UserService(ApplicationDbContext.Create());
 
             userService.AddUsers(model.Count);
 
-            var count = userService.GetUserCount();
+            var response = new IndexResponseModel();
 
-            ViewBag.Message = $"{count} users.";
+            response.Count = userService.GetUserCount();
+            response.Users = userService.GetUsers();
 
-            return View();
+            return View(response);
         }
 
     }
