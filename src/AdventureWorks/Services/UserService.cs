@@ -13,13 +13,13 @@ namespace AdventureWorks.Services
             _context = context;
         }
 
-        public void AddUsers()
+        public void AddUsers(int count)
         {
-            foreach(var i in Enumerable.Range(0, 5))
+            foreach(var i in Enumerable.Range(0, count))
             {
-                _context.Users.Add(new Models.ApplicationUser()
+                _context.Users.Add(new Models.UserModel()
                 {
-                    UserName = Guid.NewGuid().ToString(),
+                    Id = Guid.NewGuid().ToString(),
                     Email = $"{Guid.NewGuid()}@test.com",
                 });
             }

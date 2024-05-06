@@ -30,44 +30,10 @@ namespace AdventureWorks.DataAccess
         protected override void Seed(ApplicationDbContext context)
         {
             const string sqlTextCreateTables = @"
-        CREATE TABLE IF NOT EXISTS AspNetUsers
+        CREATE TABLE IF NOT EXISTS User
         (
             Id TEXT PRIMARY KEY NOT NULL,
-            Email TEXT,
-            EmailConfirmed BIT,
-            PasswordHash TEXT,
-            SecurityStamp TEXT,
-            PhoneNumber TEXT,
-            PhoneNumberConfirmed BIT,
-            TwoFactorEnabled BIT,
-            LockoutEndDateUtc DATETIME,
-            LockoutEnabled BIT,
-            PostalCode TEXT,
-            AccessFailedCount INT,
-            UserName TEXT
-        );
-        CREATE TABLE IF NOT EXISTS AspNetUserClaims
-        (
-            Id TEXT PRIMARY KEY NOT NULL,
-            UserId TEXT,
-            ClaimType BIT,
-            ClaimValue TEXT
-        );
-        CREATE TABLE IF NOT EXISTS AspNetUserLogins
-        (
-            LoginProvider TEXT,
-            ProviderKey TEXT,
-            UserId TEXT
-        );
-        CREATE TABLE IF NOT EXISTS AspNetRoles
-        (
-            Id TEXT,
-            Name TEXT
-        );
-        CREATE TABLE IF NOT EXISTS AspNetUserRoles
-        (
-            UserId TEXT,
-            RoleId TEXT
+            Email TEXT
         );
         ";
 

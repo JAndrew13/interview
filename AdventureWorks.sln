@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34714.143
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdventureWorks", "AdventureWorks.csproj", "{CF939E36-2C9A-4CB4-AD43-0B068B7D5A27}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdventureWorks", "src\AdventureWorks\AdventureWorks.csproj", "{CF939E36-2C9A-4CB4-AD43-0B068B7D5A27}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

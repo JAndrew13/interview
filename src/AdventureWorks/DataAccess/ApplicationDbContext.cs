@@ -4,13 +4,16 @@ using System.Data.Entity;
 
 namespace AdventureWorks.DataAccess
 {
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
+    public class ApplicationDbContext : DbContext
     {
         public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+            : base("DefaultConnection")
         {
             Database.SetInitializer(new ApplicationDbContextInitializer());
         }
+
+
+        public DbSet<UserModel> Users { get; set; }
 
         public static ApplicationDbContext Create()
         {
