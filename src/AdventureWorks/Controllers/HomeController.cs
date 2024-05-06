@@ -49,7 +49,6 @@ namespace AdventureWorks.Controllers
             
             await Task.Run(() =>
             {
-
                 userService.AddUsers();
             }).ConfigureAwait(false);
 
