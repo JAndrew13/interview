@@ -12,6 +12,7 @@ namespace AdventureWorks.Controllers
             return View();
         }
 
+        [Authorize]
         public async Task<ActionResult> About()
         {
             var userService = new UserService(ApplicationDbContext.Create());
