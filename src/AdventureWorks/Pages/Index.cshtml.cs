@@ -2,7 +2,7 @@ using AdventureWorks.Models;
 using AdventureWorks.Services;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace AdventureWorks8.Pages
+namespace AdventureWorks.Pages
 {
     public class IndexModel : PageModel
     {
