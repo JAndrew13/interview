@@ -16,7 +16,7 @@
 			"protocol": "https"
 		}
 	},
-	"postCreateCommand": "dotnet restore",
+	"postCreateCommand": "dotnet dev-certs https --trust && dotnet restore",
 	"customizations": {
 		// Configure properties specific to VS Code.
 		"vscode": {
