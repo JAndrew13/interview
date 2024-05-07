@@ -6,19 +6,5 @@
 
 <main aria-labelledby="title">
     <h2 id="title">@ViewBag.Title.</h2>
-    @using (Html.BeginForm("Index", "Home", new { Count = 5 }, FormMethod.Post, true, new { role = "form" }))
-    {
-        foreach (var user in Model.Users)
-        {
-            <div>@user.Email</div>
-        }
-
-        <div>@Model.Count <span>count</span></div>
-
-        <div class="row">
-            <div class="offset-md-2 col-md-10">
-                <input type="submit" value="Create Users" class="btn btn-outline-dark" />
-            </div>
-        </div>
-    }
+    <div>@Model.Count <span>users</span></div>
 </main>

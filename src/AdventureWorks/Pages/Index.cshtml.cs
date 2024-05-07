@@ -17,19 +17,10 @@ namespace AdventureWorks.Pages
         }
 
         public int Count { get; set; }
-        public IEnumerable<UserModel> Users { get; set; } = Enumerable.Empty<UserModel>();
-
         public void OnGet()
         {
             Count = _userService.GetUserCount();
-            Users = _userService.GetUsers();
         }
 
-        public void OnPost(int count)
-        {
-            _userService.AddUsers(count);
-            Count = _userService.GetUserCount();
-            Users = _userService.GetUsers();
-        }
     }
 }
