@@ -1,18 +1,19 @@
 ﻿using AdventureWorks.DataAccess;
 using AdventureWorks.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+using Microsoft.Extensions.Caching.Memory;
 
 namespace AdventureWorks.Services
 {
     public class UserService
     {
         private readonly ApplicationDbContext _context;
+        private readonly IMemoryCache _memoryCache;
 
-        public UserService(ApplicationDbContext context)
+        public UserService(ApplicationDbContext context,
+            IMemoryCache memoryCache)
         {
             _context = context;
+            _memoryCache = memoryCache;
         }
 
         public IEnumerable<UserModel> GetUsers()
@@ -22,7 +23,7 @@ namespace AdventureWorks.Services
 
         public void AddUsers(int count)
         {
-            foreach(var i in Enumerable.Range(0, count))
+            foreach (var i in Enumerable.Range(0, count))
             {
                 _context.Users.Add(new Models.UserModel()
                 {
@@ -35,17 +36,16 @@ namespace AdventureWorks.Services
 
         public int GetUserCount()
         {
-            if (System.Web.HttpContext.Current != null)
+            if (_memoryCache.TryGetValue("USER_COUNT", out int value))
             {
-                if (System.Web.HttpContext.Current.Cache["USER_COUNT"] == null ||
-                    !int.TryParse(System.Web.HttpContext.Current.Cache["USER_COUNT"].ToString(), out var count))
-                {
-                    count = _context.Users.Count();
-                    System.Web.HttpContext.Current.Cache["USER_COUNT"] = count;
-                }
-                return count;
+                return value;
             }
-            return _context.Users.Count();
+            else
+            {
+                var userCount = _context.Users.Count();
+                _memoryCache.Set("USER_COUNT", userCount);
+                return userCount;
+            }
         }
 
     }
