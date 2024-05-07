@@ -37,11 +37,11 @@ namespace AdventureWorks.Services
         {
             if (System.Web.HttpContext.Current != null)
             {
-                if (System.Web.HttpContext.Current.Session["USER_COUNT"] == null ||
-                    !int.TryParse(System.Web.HttpContext.Current.Session["USER_COUNT"].ToString(), out var count))
+                if (System.Web.HttpContext.Current.Cache["USER_COUNT"] == null ||
+                    !int.TryParse(System.Web.HttpContext.Current.Cache["USER_COUNT"].ToString(), out var count))
                 {
                     count = _context.Users.Count();
-                    System.Web.HttpContext.Current.Session["USER_COUNT"] = count;
+                    System.Web.HttpContext.Current.Cache["USER_COUNT"] = count;
                 }
                 return count;
             }
