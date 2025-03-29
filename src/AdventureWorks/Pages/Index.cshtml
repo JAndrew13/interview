@@ -7,4 +7,10 @@
 <main aria-labelledby="title">
     <h2 id="title">@ViewBag.Title.</h2>
     <div>@Model.Count <span>users</span></div>
+    <ul>
+        @foreach (var user in Model.Users)
+        {
+            <li>@user.Email</li>
+        }
+    </ul>
 </main>
