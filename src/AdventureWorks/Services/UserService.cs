@@ -36,16 +36,14 @@ namespace AdventureWorks.Services
 
         public int GetUserCount()
         {
-            if (_memoryCache.TryGetValue("USER_COUNT", out int value))
-            {
-                return value;
-            }
-            else
-            {
-                var userCount = _context.Users.Count();
-                _memoryCache.Set("USER_COUNT", userCount);
-                return userCount;
-            }
+            var userCount = _context.Users.Count();
+            _memoryCache.Set("USER_COUNT", userCount);
+            return userCount;
+        }
+        
+        public List<UserModel> GetAllUsers()
+        {
+            return _context.Users.ToList();
         }
 
     }
