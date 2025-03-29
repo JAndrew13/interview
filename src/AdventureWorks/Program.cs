@@ -5,6 +5,9 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Initialize SQLite Batteries to load native libraries
+SQLitePCL.Batteries_V2.Init();
+
 // Add services to the container.
 builder.Services.AddRazorPages();
 
