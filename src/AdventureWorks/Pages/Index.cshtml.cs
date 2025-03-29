@@ -17,8 +17,11 @@ namespace AdventureWorks.Pages
         }
 
         public int Count { get; set; }
+        public List<UserModel> Users { get; set; } = new List<UserModel>();
+        
         public void OnGet()
         {
+            Users = _userService.GetAllUsers();  // Fetch a list of all users
             Count = _userService.GetUserCount();
         }
 
